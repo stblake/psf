@@ -19,7 +19,7 @@ The program requires you to specify the following:
 
 * The number of trials for each configuration of phase, array size, and denominator. For example, n_trials = 100. 
 
-* The nuber of sums, N. For example n_sums = 2.
+* The number of sums, N. For example n_sums = 2.
 
 * The maximum degree of the polynomial p_k(x,y) in x. For example degX = 2. 
 
