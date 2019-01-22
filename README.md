@@ -1,6 +1,8 @@
 # psf
 Perfect Sequence Finder (psf) - finds constructions for perfect sequences and arrays. This program is a spin-off of numerous different programs I have been running since mid 2006. Many details of this program are given in my [PhD thesis](https://monash.figshare.com/articles/Constructions_for_Perfect_Autocorrelation_Sequences_and_Multi-Dimensional_Arrays/4903103), in particular Chapter 9. 
 
+The goal of this project is to find a perfect sequence which is longer than the Frank sequences, length n^2 over n roots of unity. For example, the discovery of a sequence of length 216 over 6 roots of unity. It is presently unknown if such sequences exist, however they would have immediate applications in communications, providing the phase is not too large. 
+
 This program searches for n-phase two dimensional arrays with perfect periodic autocorrelation. The index function of the array is of the form 
 
 S(i,j) = \omega^{\sum_{k=1}^{N}floor(p_k(x,y)/d_k)}, 
