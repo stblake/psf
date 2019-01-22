@@ -29,9 +29,9 @@ The program requires you to specify the following:
 
 * A flag to specify that the array is square. square_only = True. By default square_only = False. 
 
-* A flag to spefify that the dimensions of the arrays are coprime only. diagonal_only = True. By default diagonal_only = False. 
+* A flag to specify that the dimensions of the arrays are coprime only. diagonal_only = True. By default diagonal_only = False. 
 
-If a perfect array is found the array is then checked for the Array Orthogonality Property. If so a perfect sequence has been discovered. If the array has coprime dimensions then a perfect sequence has been discovered. 
+If a perfect array is found the array is then checked for the Array Orthogonality Property. If so, a perfect sequence has been discovered. If the array has coprime dimensions then a perfect sequence has been discovered. 
 
 
 Numerous examples are given in searches.py. 
