@@ -7,7 +7,7 @@ This program searches for n-phase two dimensional arrays with perfect periodic a
 
 S(i,j) = \omega^{\sum_{k=1}^{N}floor(p_k(x,y)/d_k)}, 
 
-where \omega = e^(2 \pi \sqrt{-1}/n), p_k(x,y) are bivariate polyomials and d_k \elem Z_n. Per Ma, Ng "On non-existence of perfect and nearly perfect sequences", Int. J. Information and Coding Theory, Vol. 1, No. 1, 2009, n should not be prime. The polynomials, p_k(x,y), and denominators are randomly generated within user-specified constraints. 
+where \omega = e^(2 \pi \sqrt{-1}/n), p_k(x,y) are bivariate polyomials and d_k \elem Z_n. Per Ma, Ng "On non-existence of perfect and nearly perfect sequences", *Int. J. Information and Coding Theory, Vol. 1, No. 1, 2009*, n should not be prime. The polynomials, p_k(x,y), and denominators are randomly generated within user-specified constraints. 
 
 The program requires you to specify the following: 
 
