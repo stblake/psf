@@ -1,5 +1,5 @@
 # psf
-Perfect Sequence Finder (psf) - finds constructions for perfect sequences and arrays. 
+Perfect Sequence Finder (psf) - finds constructions for perfect sequences and arrays. This program is a spin-off of numerous different programs I have been running since mid 2006. Many details of this program are given in my [PhD thesis](https://monash.figshare.com/articles/Constructions_for_Perfect_Autocorrelation_Sequences_and_Multi-Dimensional_Arrays/4903103), in particular Chapter 9. 
 
 This program searches for n-phase two dimensional arrays with perfect periodic autocorrelation. The index function of the array is of the form 
 
@@ -35,9 +35,9 @@ If a perfect array is found the array is then checked for the Array Orthogonalit
 
 Numerous examples are given in searches.py. 
 
-Running this program with efficient correlations uses FFTW (http://www.fftw.org/). Instructions for installing FFTW using brew is given at https://brewformulas.org/Fftw and instructions for the installation of pyfftw is given at https://github.com/pyFFTW/pyFFTW. 
+Running this program with efficient correlations uses [FFTW](http://www.fftw.org/). Instructions for installing FFTW using brew is given at https://brewformulas.org/Fftw and instructions for the installation of pyfftw is given at https://github.com/pyFFTW/pyFFTW. 
 
-Alternatively you can use FFTpack (https://docs.scipy.org/doc/scipy/reference/tutorial/fftpack.html) by replacing crosscorrelate_fftw with crosscorrelate_fftpack in max_abs_off_peak(). 
+Alternatively you can use [FFTpack](https://docs.scipy.org/doc/scipy/reference/tutorial/fftpack.html) by replacing crosscorrelate_fftw with crosscorrelate_fftpack in max_abs_off_peak(). 
 
 In the near future I'll test out replacing the C code for fill_array_2d with a numba compiled python equivalent. Ideally this should not slow down the program too much, if at all, while making everything significantly simpler. 
 
