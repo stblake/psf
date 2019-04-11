@@ -191,6 +191,8 @@ def construction_search(n_trials, min_elems, max_elems, phase, modulus, n_sums =
                     continue
                 elif 2*n == phase and 2*m == phase:
                     continue
+                elif n*m == phase**2:
+                    continue
 
                 # Exclude trivially small arrays. 
                 
@@ -441,8 +443,16 @@ def write_index_as_string(n_sums, Cs, Ns, pxys):
     
     first = True
     indexfn = ''
+
+    if n_sums == 1 and Cs[0] == 0:
+        indexfn = '0'
+        return indexfn
+
     
     for k in range(0, n_sums):
+
+        if Cs[k] == 0:
+            continue
         
         if not first and Cs[k] > 0:
             indexfn += ' + '
