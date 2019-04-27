@@ -29,7 +29,7 @@ def psf2d(search_data_file = 'search_history.json', perfect_sequence_log_file = 
     n_trials = 250, \
     n_sums = 1, degX = 2, degY = 2, \
     tol_perfect = 0.01, \
-    square_only = False, diagonal_only = False, verbose = True, run_checks = True):
+    square_only = False, diagonal_only = False, symmetric_only = False, verbose = True, run_checks = True):
 
     if run_checks:
         if verbose:
@@ -63,7 +63,7 @@ def psf2d(search_data_file = 'search_history.json', perfect_sequence_log_file = 
         min_elems, max_elems = size_range
         construction_search(n_trials, min_elems, max_elems, phase, modulus, \
             n_sums = n_sums, degX = degX, degY = degY, denominators = dens, \
-            square_only = square_only, diagonal_only = diagonal_only, \
+            square_only = square_only, diagonal_only = diagonal_only, symmetric_only = symmetric_only, \
             search_data_file = search_data_file, perfect_sequence_log_file = perfect_sequence_log_file, \
             perfect_array_log_file = perfect_array_log_file, \
             tol_perfect = tol_perfect, verbose = verbose)
@@ -76,7 +76,8 @@ def psf2d(search_data_file = 'search_history.json', perfect_sequence_log_file = 
 
 
 def construction_search(n_trials, min_elems, max_elems, phase, modulus, n_sums = 1, \
-    degX = 2, degY = 2, denominators = 'Automatic', square_only = False, diagonal_only = False, \
+    degX = 2, degY = 2, denominators = 'Automatic', \
+    square_only = False, diagonal_only = False, symmetric_only = False, \
     search_data_file = 'search_history.json', perfect_sequence_log_file = 'perfect_sequences.log', \
     perfect_array_log_file = 'perfect_arrays.log', \
     tol_perfect = 0.01, verbose = True):
@@ -221,6 +222,10 @@ def construction_search(n_trials, min_elems, max_elems, phase, modulus, n_sums =
                         
                     Cs = np.random.randint(low = 1 - modulus, high = modulus, size = (n_sums), dtype = np.int32)
                     pxy = np.random.randint(low = 1 - modulus, high = modulus, size = (n_sums, degX + 1, degY + 1), dtype = np.int32)
+
+                    if symmetric_only:
+                        pxy = np.array([np.maximum( a, a.transpose()) for a in pxy])
+                        np.ascontiguousarray(pxy, dtype=np.int32)
 
                     # print write_index_as_string(n_sums, Cs, Ns, pxy)
 
@@ -443,17 +448,15 @@ def write_index_as_string(n_sums, Cs, Ns, pxys):
     
     first = True
     indexfn = ''
-
-    if n_sums == 1 and Cs[0] == 0:
-        indexfn = '0'
-        return indexfn
-
     
-    for k in range(0, n_sums):
+    if n_sums == 1 and Cs[0] == 0:
+        return '0'
 
+    for k in range(0, n_sums):
+        
         if Cs[k] == 0:
             continue
-        
+
         if not first and Cs[k] > 0:
             indexfn += ' + '
         
@@ -676,6 +679,7 @@ def poly_eval_mod_2d(coeffs, x, y, modulus):
 
 
 def prime_Q(n):
+
     if n == 2:
         return True
     if n%2 == 0 or n < 2:
